@@ -1,0 +1,80 @@
+CREATE DATABASE databaseName01; -> for creating new database
+DROP DATABASE databaseName01; -> for deleting a database
+USE databaseName01; -> for selecting a folder/database/table
+CREATE TABLE tableName01; -> for creating new table
+INSERT INTO tableName01 VALUES(..., ...) -> for inserting new row data into tableName01
+SELECT * FROM tableName01; -> for gets all information form tableName01
+CREATE DATABASE IF NOT EXISTS databaseName01; -> if databaseName01 exists ignore it
+DROP DATABASE IF EXISTS databaseName01; -> delete databaseName01 if exists
+SHOW DATABASES; -> for showing all existing databases
+SHOW TABLES; -> for showing all existing tables
+TRUNCATE TABLE tableName01; -> to delete table's data
+SELECT * FROM tableA
+	INNER JOIN tableB
+	ON tableA.colA = tableB.colB;
+SELECT * FROM tableA
+	UNION
+	SELECT * FROM tableB
+SELECT * FROM tableA
+	UNION ALL
+	SELECT * FROM tableB; -> for duplicates value
+SELECT * FROM tableName01
+	WHERE condition (Sub-Queries).
+INSERT INTO tableName01 (col1, col2,...) VALUES (...), (...) ...; -> for inserting multiple row in particular column
+
+Table related Query
+-------------------
+UPDATE tableName01 SET col1 = val1,... WHERE conditions; -> update specific rows
+DELETE FROM tableName01 WHERE conditions; -> delete specific rows
+
+Types of SQL Commands
+---------------------
+DDL(Data Definition Language): create, alter, rename, truncate, drop
+DQL(Data Query Language): select
+DML(Data Manipulation Language): insert, update, delete
+DCL(Data Control Language)
+TCL(Tansaction Control Language): start transaction, commit, rollback commit
+
+KEYS
+----
+CHECKS, DEFAULT, DISTINCT, IN, LIMIT, BETWEEN, ON UPDATE CASCADE, ON DELETE CASCADE, ALTER, 
+
+General ORDER
+--------------
+SELECT ... FROM tableName01 WHERE ... LIMIT ...;
+SELECT ... FROM tableName01 WHERE ... ORDER BY columnName01 ASC/DESC LIMIT ...;
+SELECT ... FROM tableName01 GROUP BY ... ORDER BY columnName01 ASC/DESC LIMIT ...;
+SELECT ... FROM tableName01 GROUP BY ... ORDER BY columnName01 ASC/DESC LIMIT ...;
+SELECT ... FROM tableName01 WHERE ... GROUP BY ... HAVING ... ORDER BY ... ASC/DESC LIMIT ...;
+
+
+Aggregate Funtion -> returns single value
+-----------------
+COUNT()
+MAX()
+MIN()
+SUM()
+AVG()
+
+HAVING Clause -> Its helps to apply conditions on groups.
+-------------
+
+ALTER ->Table related Queries -> to change the schema
+------
+ADD column: ALTER TABLE tableName01 ADD COLUMN columnName01 datatype constraint;
+        example: ALTER TABLE student ADD COLUMN age INT NOT NULL DEFAULT 19; 
+DROP column: ALTER TABLE tableName01 DROP COLUMN columnName01;
+        example: ALTER TABLE student DROP COLUMN age;
+RENAME table: ALTER TABLE tableName01 RENAME TO newTableName01;
+        example: ALTER TABLE student RENAME TO students;
+CHANGE column(rename column): ALTER TABLE tableName01 CHANGE COLUMN oldColumnName01 newColumnName01 newDatatype newConstraint;
+        example: ALTER TABLE student CHANGE COLUMN age studentAge INT;
+MODIFY COLUMN: ALTER TABLE tableName01 MODIFY columnName01 newDatatype newConstraint;
+        example: ALTER TABLE student MODIFY age VARCHAR(2);
+
+
+
+...     ...
+Important
+...     ...
+SET SQL_SAFE_UPDATES = 0; -> 0 for safe mode off, 1 for safe mode on
