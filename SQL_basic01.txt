@@ -1,26 +1,45 @@
-CREATE DATABASE databaseName01; -> for creating new database
-DROP DATABASE databaseName01; -> for deleting a database
-USE databaseName01; -> for selecting a folder/database/table
-CREATE TABLE tableName01; -> for creating new table
-INSERT INTO tableName01 VALUES(..., ...) -> for inserting new row data into tableName01
-SELECT * FROM tableName01; -> for gets all information form tableName01
-CREATE DATABASE IF NOT EXISTS databaseName01; -> if databaseName01 exists ignore it
-DROP DATABASE IF EXISTS databaseName01; -> delete databaseName01 if exists
-SHOW DATABASES; -> for showing all existing databases
-SHOW TABLES; -> for showing all existing tables
-TRUNCATE TABLE tableName01; -> to delete table's data
-SELECT * FROM tableA
+01. CREATE DATABASE databaseName01; -> for creating new database
+02. DROP DATABASE databaseName01; -> for deleting a database
+03. USE databaseName01; -> for selecting a folder/database/table
+04. CREATE TABLE tableName01; -> for creating new table
+05. INSERT INTO tableName01 VALUES(..., ...) -> for inserting new row data into tableName01
+06. SELECT * FROM tableName01; -> for gets all information form tableName01
+07. CREATE DATABASE IF NOT EXISTS databaseName01; -> if databaseName01 exists ignore it
+08. DROP DATABASE IF EXISTS databaseName01; -> delete databaseName01 if exists
+09. SHOW DATABASES; -> for showing all existing databases
+10. SHOW TABLES; -> for showing all existing tables
+11. TRUNCATE TABLE tableName01; -> to delete table's data
+12. SELECT * FROM tableA
 	INNER JOIN tableB
 	ON tableA.colA = tableB.colB;
-SELECT * FROM tableA
+13. SELECT * FROM tableA
 	UNION
 	SELECT * FROM tableB
-SELECT * FROM tableA
+14. SELECT * FROM tableA
 	UNION ALL
 	SELECT * FROM tableB; -> for duplicates value
-SELECT * FROM tableName01
+15. SELECT * FROM tableName01
 	WHERE condition (Sub-Queries).
-INSERT INTO tableName01 (col1, col2,...) VALUES (...), (...) ...; -> for inserting multiple row in particular column
+16. INSERT INTO tableName01 (col1, col2,...) VALUES (...), (...) ...; -> for inserting multiple row in particular column
+17. SELECT CustomerName, CONCAT_WS(', ', Address, PostalCode, City, Country) AS Address FROM Customers;
+    CASE
+        WHEN condition1 THEN result1
+        WHEN condition2 THEN result2
+        WHEN conditionN THEN resultN
+        ELSE result
+    END; -> Example: 
+    SELECT OrderID, Quantity,
+    CASE 
+        WHEN Quantity > 30 THEN 'The quantity is greater than 30'
+ 	    WHEN Quantity = 30 THEN 'The quantity is 30'
+        ELSE 'The quantity is under 30'
+    END AS QuantityText
+    FROM OrderDetails;
+19. SELECT w1.id
+	FROM Weather as w1
+	INNER JOIN Weather as w2
+	ON DATEDIFF(day, w2.recordDate, w1.recordDate) = 1
+    WHERE w1.temperature > w2.temperature;
 
 Table related Query
 -------------------
@@ -33,11 +52,12 @@ DDL(Data Definition Language): create, alter, rename, truncate, drop
 DQL(Data Query Language): select
 DML(Data Manipulation Language): insert, update, delete
 DCL(Data Control Language)
-TCL(Tansaction Control Language): start transaction, commit, rollback commit
+TCL(Transaction Control Language): start transaction, commit, rollback commit
 
 KEYS
 ----
-CHECKS, DEFAULT, DISTINCT, IN, LIMIT, BETWEEN, ON UPDATE CASCADE, ON DELETE CASCADE, ALTER, 
+CHECKS, DEFAULT, DISTINCT, IN, LIMIT, BETWEEN, ON UPDATE CASCADE, ON DELETE CASCADE, ALTER, DATEDIFF, CONCAT_WS, IFNULL(value, 0), COALESCE(),
+
 
 General ORDER
 --------------
@@ -45,7 +65,7 @@ SELECT ... FROM tableName01 WHERE ... LIMIT ...;
 SELECT ... FROM tableName01 WHERE ... ORDER BY columnName01 ASC/DESC LIMIT ...;
 SELECT ... FROM tableName01 GROUP BY ... ORDER BY columnName01 ASC/DESC LIMIT ...;
 SELECT ... FROM tableName01 GROUP BY ... ORDER BY columnName01 ASC/DESC LIMIT ...;
-SELECT ... FROM tableName01 WHERE ... GROUP BY ... HAVING ... ORDER BY ... ASC/DESC LIMIT ...;
+SELECT ... FROM tableName01 WHERE ... GROUP BY ... HAVING ... ORDER BY ... ASC/DESC LIMIT ... OFFSET ...;
 
 
 Aggregate Funtion -> returns single value
