@@ -74,9 +74,9 @@ where x.rnk < 4;
 
 -- Checking the different between rank, dense_rnk and row_number window functions:
 select e.*,
-rank() over(partition by dept_name order by salary desc) as rnk,
-dense_rank() over(partition by dept_name order by salary desc) as dense_rnk,
-row_number() over(partition by dept_name order by salary desc) as rn
+rank() over(partition by dept_name order by salary desc) as rnk, -- 1 2 2 4 5 5 5 8
+dense_rank() over(partition by dept_name order by salary desc) as dense_rnk, -- 1 2 2 3 4 4 4 5 
+row_number() over(partition by dept_name order by salary desc) as rn -- 1 2 3 4 5 6 7 8
 from employee e;
 
 
